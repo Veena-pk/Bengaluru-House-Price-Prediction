@@ -3,7 +3,7 @@ import util
 
 app = Flask(__name__)
 
-@app.route('/', methods = ['GET', "POST"])
+@app.route('/', methods = ['GET'])
 def homePage():
     return render_template('app.html')
     
