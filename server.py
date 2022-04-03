@@ -1,14 +1,17 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS,cross_origin
 import util
 
 app = Flask(__name__)
 
 @app.route('/', methods = ['GET', 'POST'])
+@cross_origin()
 def homePage():
     return render_template('app.html')
     
 
 @app.route('/get_location_names', methods=['GET'])
+@cross_origin()
 def get_location_names():
     response = jsonify({
         'locations': util.get_location_names()
@@ -18,6 +21,7 @@ def get_location_names():
 
 
 @app.route('/predict_home_price', methods=['GET', 'POST'])
+@cross_origin()
 def predict_home_price():
     total_sqft = float(request.form['total_sqft'])
     location = request.form['location']
